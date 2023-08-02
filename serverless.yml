@@ -1,0 +1,36 @@
+service: image-upload-service
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+
+plugins:
+  - serverless-python-requirements  # For external modules
+
+functions:
+  upload_image:
+    handler: image_upload_service.upload.handler
+    events:
+      - http:
+          path: /upload
+          method: POST
+          cors: true  
+  generate_thumbnail:
+    handler: thumbnail_generate.generate.create_thumbnail  
+  download_image:
+    handler: download_service.download_image.download_image
+    events:
+      - http:
+          path: /download/image
+          method: GET
+          cors: true    
+  download_thumbnail:
+    handler: download_service.download_thumbnail.download_thumbnail
+    events:
+      - http:
+          path: /download/thumbnail
+          method: GET
+          cors: true 
+
