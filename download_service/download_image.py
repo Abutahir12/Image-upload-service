@@ -1,12 +1,11 @@
-import boto3
 from reuse_methods.constants import BUCKET_DOMAIN
 from reuse_methods.http_methods import (
     ok_response,
     bad_request_response,
     internal_server_error_response,
+    forbidden_response
 )
-
-s3 = boto3.client("s3")
+from reuse_methods.constants import USER_IDS
 
 
 def download_image(event, context):
@@ -14,6 +13,11 @@ def download_image(event, context):
 
     query = event.get("queryStringParameters")
     user_id = query["user_id"]
+
+    if (
+        user_id not in USER_IDS
+    ):  # These hard-coded UUIDs just simulate the authorized users flow
+        return forbidden_response("The user is un-authorized to access this resource")
 
     if not len(query) and "user_id" not in query:
         return bad_request_response("Missing user id")
