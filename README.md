@@ -15,7 +15,8 @@ _There is an issue with an external dependency in lambda W.R.T thumbnail generat
 
 To run these APIs you can provide the following inputs:
 
-**Upload API: **
+**Upload API:**
+
 ```
 {
     "file_name": "dog.jpg",
