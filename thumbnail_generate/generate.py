@@ -12,7 +12,7 @@ from reuse_methods.http_methods import (
 )
 
 s3 = boto3.client("s3")
-
+sqs = boto3.client("sqs")
 
 def create_thumbnail(event, context):
     print("Input to lambda", event)
@@ -39,7 +39,11 @@ def create_thumbnail(event, context):
     s3.put_object(Bucket=BUCKET_NAME, Key=thumbnail_key, Body=thumbnail_data.getvalue())
 
     print(object_key)
-    return ok_response(object_key)
+    
+    # Delete the processed message from SQS
+    receipt_handle = sqs_message['Records'][0]['receiptHandle']
+    sqs.delete_message(QueueUrl="https://sqs.ap-south-1.amazonaws.com/594108745002/images-service-messaging-queue", ReceiptHandle=receipt_handle)
+    # return ok_response(object_key)
 
 
 
