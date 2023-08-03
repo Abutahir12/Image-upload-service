@@ -8,3 +8,4 @@ USER_IDS = [
 
 BUCKET_NAME = "user-images-bucket-dev"
 BUCKET_DOMAIN = "https://user-images-bucket-dev.s3.ap-south-1.amazonaws.com"
+DESTINATION_BUCKET_DOMAIN = "https://user-images-destination-bucket.s3.ap-south-1.amazonaws.com"

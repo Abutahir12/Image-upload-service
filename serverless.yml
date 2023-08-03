@@ -17,8 +17,9 @@ functions:
           path: /upload
           method: POST
           cors: true  
-  generate_thumbnail:
-    handler: thumbnail_generate.generate.create_thumbnail  
+  # The below lambda has been manually added in the aws console since the deployment required was different
+  # generate_thumbnail:
+  #   handler: thumbnail_generate.generate.create_thumbnail  
   download_image:
     handler: download_service.download_image.download_image
     events:
