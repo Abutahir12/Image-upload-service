@@ -19,7 +19,7 @@ To run these APIs you can provide the following inputs:
 
 ```
 {
-    "file_name": "dog.jpg",
+    "file_name": "cat.jpg",
     "user_id": "eb2128f2-5c0a-4dd1-90a5-2f0e39db7aa3"
 }
 ```
