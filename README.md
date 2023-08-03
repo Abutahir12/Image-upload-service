@@ -11,7 +11,7 @@ A lambda which will convert the image to URL
 
 **The SQS and S3 resources are available in my personal AWS Account.**
 
-_There is an issue with an external dependency in lambda W.R.T thumbnail generation, the code works fine in local, however, in the provided time I was not able to resolve the underlying cause for the same, but I am sure I'll be able to debug it_
+**Fixed this issue:** _There was an issue with an external dependency in lambda W.R.T thumbnail generation, the code worked fine in local, however, in the provided time I was not able to resolve the underlying cause for the same, I have fixed this now_
 
 To run these APIs you can provide the following inputs:
 
