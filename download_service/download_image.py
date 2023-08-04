@@ -13,6 +13,7 @@ def download_image(event, context):
 
     query = event.get("queryStringParameters")
     user_id = query["user_id"]
+    image_id = query["image_id"] # For now we can use the name as image id
 
     if (
         user_id not in USER_IDS
@@ -22,7 +23,7 @@ def download_image(event, context):
     if not len(query) and "user_id" not in query:
         return bad_request_response("Missing user id")
 
-    key = f"{user_id}/images/cat.jpg"
+    key = f"{user_id}/images/{image_id}.jpg"
     url = f"{BUCKET_DOMAIN}/{key}"
 
     return ok_response({"download_url": url})

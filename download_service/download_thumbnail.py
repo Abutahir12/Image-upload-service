@@ -12,6 +12,7 @@ def download_thumbnail(event, context):
 
     query = event.get("queryStringParameters")
     user_id = query["user_id"]
+    image_id = query["image_id"] # For now we can use the name as image id
 
     if (
         user_id not in USER_IDS
@@ -21,7 +22,7 @@ def download_thumbnail(event, context):
     if not len(query) and "user_id" not in query:
         return bad_request_response("Missing user id")
 
-    key = f"{user_id}/thumbnail/cat.jpg"
+    key = f"{user_id}/thumbnail/{image_id}.jpg"
     url = f"{DESTINATION_BUCKET_DOMAIN}/{key}" # We can also use pre-signed URL, but since it's a public bucket we can construct the URL
 
     return ok_response({"download_url": url})
